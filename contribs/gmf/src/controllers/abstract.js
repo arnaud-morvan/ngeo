@@ -412,7 +412,7 @@ gmf.AbstractController = function(config, $scope, $injector) {
         const backgrounds = theme.functionalities.default_basemap;
         if (backgrounds && backgrounds.length > 0) {
           const background = backgrounds[0];
-          this.gmfThemes_.getBgLayers(this.dimensions).then((layers) => {
+          this.gmfThemes_.getBgLayers().then((layers) => {
             const layer = ol.array.find(layers, layer => layer.get('label') === background);
             if (layer) {
               backgroundLayerMgr.set(map, layer);
@@ -429,7 +429,7 @@ gmf.AbstractController = function(config, $scope, $injector) {
    * @private
    */
   this.updateCurrentBackgroundLayer_ = function(skipPermalink) {
-    this.gmfThemes_.getBgLayers(this.dimensions).then((layers) => {
+    this.gmfThemes_.getBgLayers().then((layers) => {
       let background;
       if (!skipPermalink) {
         // get the background from the permalink
